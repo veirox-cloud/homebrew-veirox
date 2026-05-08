@@ -1,18 +1,18 @@
-# homebrew-opspilot
+# homebrew-veirox
 
 Homebrew tap for the [Veirox CLI](https://veirox.com/cli.html).
 
 ## Install
 
 ```bash
-brew install veirox-cloud/veirox/opspilot
+brew install veirox-cloud/veirox/veirox
 ```
 
 ## What's here
 
-This repo contains a single Homebrew formula for `opspilot`. The formula
+This repo contains a single Homebrew formula for `veirox`. The formula
 is **auto-updated by GoReleaser** on every CLI release tag — see
-[`opspilot-cli`](https://github.com/veirox-cloud/veirox-cli) for the
+[`veirox-cli`](https://github.com/veirox-cloud/veirox-cli) for the
 binary source.
 
 ## Why this repo is public
