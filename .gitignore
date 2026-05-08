@@ -1,0 +1,68 @@
+
+# ─── Veirox standard block (uniform across all 7 repos) ───
+# .env files (always — secrets live in /workspace/me/repositories/veirox/.env)
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Local docs (centralized at /workspace/me/repositories/veirox/docs/)
+docs/
+
+# .claude/ is centralized at /workspace/me/repositories/veirox/.claude/
+.claude/
+
+# Images & binary docs — Veirox repos serve these from CDN, not git
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.bmp
+*.tiff
+*.psd
+*.pdf
+*.ico
+!favicon.ico
+
+# Certs / keys (NEVER commit — live in /opt/shared/traefik/certs)
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+infrastructure/certs/
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+*.log.*
+
+# Coverage / cache
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+
+# Playwright e2e artifacts (regenerated each run)
+e2e/.auth/
+e2e-results/
+e2e-report/
+playwright-report/
+.playwright-mcp/
+
+# Local DB scratch
+*.sqlite
+*.sqlite-journal
+*.db-journal
