@@ -1,18 +1,18 @@
 # homebrew-opspilot — Homebrew tap
 
 > **DO NOT hand-edit the Formula files.** They are auto-pushed by GoReleaser
-> on every CLI release tag from `msrashed2018/opspilot-cli`.
+> on every CLI release tag from `veirox-cloud/veirox-cli`.
 
 ## Repo purpose
 
-Homebrew tap for the [OpsPilot CLI](https://opspilot.msrashed.com/cli.html).
+Homebrew tap for the [Veirox CLI](https://veirox.com/cli.html).
 
 ## Why this repo is public
 
 Homebrew taps must be public — `brew tap` cannot read private repos
 without auth. This is one of only two intentionally-public repos in
-the OpsPilot org (the other is `opspilot-scoop`). The CLI source
-itself stays private at `msrashed2018/opspilot-cli`.
+the Veirox org (the other is `opspilot-scoop`). The CLI source
+itself stays private at `veirox-cloud/veirox-cli`.
 
 ## How releases work
 
@@ -21,10 +21,10 @@ itself stays private at `msrashed2018/opspilot-cli`.
 3. GoReleaser builds the binaries, signs them with cosign, and pushes the
    updated formula directly to **this repo** via the `HOMEBREW_TAP_TOKEN`
    secret (a fine-grained PAT scoped to this repo only).
-4. The next `brew install msrashed2018/opspilot/opspilot` on any machine
+4. The next `brew install veirox-cloud/veirox/opspilot` on any machine
    picks up the new version.
 
-See [`opspilot-cli/.goreleaser.yaml`](https://github.com/msrashed2018/opspilot-cli/blob/main/.goreleaser.yaml)
+See [`opspilot-cli/.goreleaser.yaml`](https://github.com/veirox-cloud/veirox-cli/blob/main/.goreleaser.yaml)
 for the full release pipeline config (the `brews:` block).
 
 ## What lives here
@@ -39,7 +39,7 @@ outside the GoReleaser pipeline.
 
 ## If something breaks
 
-If `brew install msrashed2018/opspilot/opspilot` fails, the diagnostic
+If `brew install veirox-cloud/veirox/opspilot` fails, the diagnostic
 order is:
 
 1. Did GoReleaser actually push the formula? Check this repo's commit
