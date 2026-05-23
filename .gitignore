@@ -9,8 +9,8 @@
 # Local docs (centralized at /workspace/me/repositories/veirox/docs/)
 docs/
 
-# .claude/ is centralized at /workspace/me/repositories/veirox/.claude/
-.claude/
+# agent-entities/ is centralized at /workspace/me/repositories/veirox/agent-entities/
+agent-entities/
 
 # Images & binary docs — Veirox repos serve these from CDN, not git
 *.png
