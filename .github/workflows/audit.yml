@@ -1,0 +1,47 @@
+name: Audit formula
+
+# GoReleaser pushes directly to main (no PR) on every veirox-cli release
+# tag, so this runs post-hoc on every push rather than gating a merge —
+# its job is to catch a broken formula fast, not to block the push.
+#
+# Deliberately GitHub-hosted, not the workspace's usual self-hosted
+# droplet runner (see ../../../.claude/rules/self-hosted-runner.md):
+# there is no self-hosted macOS runner, and `brew` needs real macOS
+# semantics to audit meaningfully. GitHub Actions is free and unlimited
+# on public repos regardless of runner OS, so this costs nothing either
+# way — macos-latest is simply the only option that can do the job.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ruby syntax check
+        run: ruby -c veirox.rb
+
+      - name: brew style
+        run: brew style --formula ./veirox.rb
+
+      # Informational only: non-standard root-level tap layout trips
+      # some tap-structure checks that don't apply here.
+      - name: brew audit
+        run: brew audit --formula ./veirox.rb
+        continue-on-error: true
+
+      - name: Install + smoke test (the real end-to-end proof)
+        run: |
+          brew install --formula ./veirox.rb
+          brew test veirox
+          veirox version --short
