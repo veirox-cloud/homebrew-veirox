@@ -9,7 +9,8 @@ name: Audit formula
 # there is no self-hosted macOS runner, and `brew` needs real macOS
 # semantics to audit meaningfully. GitHub Actions is free and unlimited
 # on public repos regardless of runner OS, so this costs nothing either
-# way — macos-latest is simply the only option that can do the job.
+# way — macos-latest/ubuntu-latest are simply the only options that can
+# do the job (one leg per platform this formula ships a binary for).
 on:
   push:
     branches: [main]
@@ -31,17 +32,36 @@ jobs:
       - name: Ruby syntax check
         run: ruby -c veirox.rb
 
-      - name: brew style
-        run: brew style --formula ./veirox.rb
+      # ubuntu-latest has no preinstalled Homebrew (only macOS runners
+      # do) — bootstrap it so this leg actually exercises the on_linux
+      # block's URLs/checksums, not just the macOS one.
+      - name: Install Homebrew (Linux only)
+        if: runner.os == 'Linux'
+        run: |
+          NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          echo "/home/linuxbrew/.linuxbrew/bin" >> "$GITHUB_PATH"
 
-      # Informational only: non-standard root-level tap layout trips
-      # some tap-structure checks that don't apply here.
+      # Homebrew rejects `brew audit`/`brew style` on a bare file path
+      # unless it's part of a recognized tap layout — this repo's
+      # formula sits at the tap root (no Formula/ subdir, matching how
+      # GoReleaser actually publishes it), which `brew install
+      # <user>/<repo>/<formula>` resolves fine but a raw path does not.
+      # Tap the local checkout under its real name so every check below
+      # goes through the same resolution path a real `brew install` does.
+      - name: Tap local checkout
+        run: brew tap veirox-cloud/veirox "$PWD"
+
+      - name: brew style
+        run: brew style veirox-cloud/veirox/veirox
+
+      # Informational only: some audit checks (e.g. GitHub-hosted-only
+      # conventions from homebrew-core) don't apply to a third-party tap.
       - name: brew audit
-        run: brew audit --formula ./veirox.rb
+        run: brew audit --formula veirox-cloud/veirox/veirox
         continue-on-error: true
 
       - name: Install + smoke test (the real end-to-end proof)
         run: |
-          brew install --formula ./veirox.rb
+          brew install veirox-cloud/veirox/veirox
           brew test veirox
           veirox version --short
