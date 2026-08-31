@@ -49,6 +49,6 @@ class Veirox < Formula
   end
 
   test do
-    assert_match "veirox", shell_output("#{bin}/veirox version --short")
+    assert_match version.to_s, shell_output("#{bin}/veirox version --short")
   end
 end
