@@ -29,7 +29,11 @@ for the full release pipeline config (the `brews:` block).
 
 ## What lives here
 
-- `Formula/veirox.rb` — the auto-generated Homebrew formula (ONE file).
+- `veirox.rb` — the auto-generated Homebrew formula (ONE file, at repo
+  root — `veirox-cli/.goreleaser.yaml`'s `brews:` block sets no
+  `folder:`, so GoReleaser writes it to the root, not `Formula/`).
+- `CHANGELOG.md` — Keep-a-Changelog style; only worth updating for a
+  real behavioral change to this tap, not every formula bump.
 - `LICENSE` — Apache 2.0.
 - `NOTICE` — boilerplate.
 - `README.md` — install instructions.
@@ -46,9 +50,9 @@ order is:
    log for a recent commit by `goreleaserbot`.
 2. Did the CLI release actually upload binaries to GitHub Releases?
    Check `veirox-cli` releases page.
-3. Are the SHA-256 checksums in `Formula/veirox.rb` matching the
-   uploaded archives? GoReleaser handles this, but a partial release
-   can leave inconsistency. Re-run the `cli` release workflow.
+3. Are the SHA-256 checksums in `veirox.rb` matching the uploaded
+   archives? GoReleaser handles this, but a partial release can leave
+   inconsistency. Re-run the `cli` release workflow.
 
 ## Rebrand-readiness
 
