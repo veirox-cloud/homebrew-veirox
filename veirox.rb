@@ -5,13 +5,13 @@
 class Veirox < Formula
   desc "DevOps automation as MCP tools for your agent"
   homepage "https://veirox.com"
-  version "0.3.1"
+  version "0.3.2"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/veirox-cloud/veirox-dist/releases/download/v0.3.1/veirox_0.3.1_darwin_amd64.tar.gz"
-      sha256 "95ca3c2928c3dfb3b2dfab1920099dd316406e0e567746d5a4523e5471f10ab9"
+      url "https://github.com/veirox-cloud/veirox-dist/releases/download/v0.3.2/veirox_0.3.2_darwin_amd64.tar.gz"
+      sha256 "c85a5997384d0edc1781adedddc6f348aaae313ab83c7bb5822ac7692532d4db"
 
       define_method(:install) do
         bin.install "veirox"
@@ -19,8 +19,8 @@ class Veirox < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/veirox-cloud/veirox-dist/releases/download/v0.3.1/veirox_0.3.1_darwin_arm64.tar.gz"
-      sha256 "e3b20b7ea8f8a331c6a7c870575ef28ab61c8a60e93f48d04f6389fd0442b0c8"
+      url "https://github.com/veirox-cloud/veirox-dist/releases/download/v0.3.2/veirox_0.3.2_darwin_arm64.tar.gz"
+      sha256 "441e3e7e3af1bc305aaa7e8d11c6fe039b01cf0007bd161c645b9bb68d9ba100"
 
       define_method(:install) do
         bin.install "veirox"
@@ -31,16 +31,16 @@ class Veirox < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/veirox-cloud/veirox-dist/releases/download/v0.3.1/veirox_0.3.1_linux_amd64.tar.gz"
-      sha256 "c0975db2d8418fdd2b2b051aed6abf941a1e35d7ba818bd2a0370a97b547cb98"
+      url "https://github.com/veirox-cloud/veirox-dist/releases/download/v0.3.2/veirox_0.3.2_linux_amd64.tar.gz"
+      sha256 "5a55ead7cf48ec61d581cb5bd5081171cbfab9b4b3a71d3a24a8d3807ba19667"
       define_method(:install) do
         bin.install "veirox"
         generate_completions_from_executable(bin/"veirox", "completion")
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/veirox-cloud/veirox-dist/releases/download/v0.3.1/veirox_0.3.1_linux_arm64.tar.gz"
-      sha256 "5896983fd8d421d81a17d0cb1c69a26f7ffff7bf175b75dd37e777d8fd7efc39"
+      url "https://github.com/veirox-cloud/veirox-dist/releases/download/v0.3.2/veirox_0.3.2_linux_arm64.tar.gz"
+      sha256 "accb939ad88a601a86f462aa9d86d101ffe3464a65297228c5c29f9f0b126376"
       define_method(:install) do
         bin.install "veirox"
         generate_completions_from_executable(bin/"veirox", "completion")
