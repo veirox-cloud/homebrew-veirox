@@ -63,7 +63,7 @@ prefix convention** because Homebrew protocol mandates the
 `homebrew-` prefix. The new equivalent would be
 `homebrew-<newbrand>` and we'd cross-deprecate per a rebrand runbook
 (not yet written; it would live at `veirox-docs/runbooks/rebrand-runbook.md`
-per that repo's convention, `.claude/rules/docs-runbooks.md`).
+per that repo's convention, `veirox-docs/CLAUDE.md`).
 
 ## License
 
