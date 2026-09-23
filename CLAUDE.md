@@ -3,6 +3,8 @@
 > **DO NOT hand-edit the Formula files.** They are auto-pushed by GoReleaser
 > on every CLI release tag from `veirox-cloud/veirox-cli`.
 
+`AGENTS.md` in this directory is a symlink to this file: Claude Code, Codex, Copilot and every other agent read the identical text, so edit `CLAUDE.md` only and never keep a separate copy.
+
 ## Repo purpose
 
 Homebrew tap for the [Veirox CLI](https://veirox.com/cli.html).
@@ -59,8 +61,9 @@ order is:
 If we ever rebrand, **this repo's name cannot follow the `<brand>-`
 prefix convention** because Homebrew protocol mandates the
 `homebrew-` prefix. The new equivalent would be
-`homebrew-<newbrand>` and we'd cross-deprecate per the rebrand
-runbook (`veirox-backend/docs/runbooks/rebrand-runbook.md`).
+`homebrew-<newbrand>` and we'd cross-deprecate per a rebrand runbook
+(not yet written; it would live at `veirox-docs/runbooks/rebrand-runbook.md`
+per that repo's convention, `.claude/rules/docs-runbooks.md`).
 
 ## License
 

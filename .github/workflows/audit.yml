@@ -5,7 +5,7 @@ name: Audit formula
 # its job is to catch a broken formula fast, not to block the push.
 #
 # Deliberately GitHub-hosted, not the workspace's usual self-hosted
-# droplet runner (see ../../../.claude/rules/self-hosted-runner.md):
+# droplet runner (see ../../../veirox-infra/CLAUDE.md):
 # there is no self-hosted macOS runner, and `brew` needs real macOS
 # semantics to audit meaningfully. GitHub Actions is free and unlimited
 # on public repos regardless of runner OS, so this costs nothing either
