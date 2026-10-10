@@ -61,9 +61,7 @@ order is:
 If we ever rebrand, **this repo's name cannot follow the `<brand>-`
 prefix convention** because Homebrew protocol mandates the
 `homebrew-` prefix. The new equivalent would be
-`homebrew-<newbrand>` and we'd cross-deprecate per a rebrand runbook
-(not yet written; it would live at `veirox-docs/runbooks/rebrand-runbook.md`
-per that repo's convention, `veirox-docs/CLAUDE.md`).
+`homebrew-<newbrand>` and the old tap would be cross-deprecated.
 
 ## License
 
